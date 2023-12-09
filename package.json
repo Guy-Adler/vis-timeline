@@ -1,16 +1,8 @@
 {
   "name": "vis-timeline",
-  "version": "0.0.0-no-version",
-  "description": "Create a fully customizable, interactive timeline with items and ranges.",
-  "homepage": "https://visjs.github.io/vis-timeline/",
+  "version": "1.0.0",
+  "description": "A fork of vis-timeline. Create a fully customizable, interactive timeline with items and ranges.",
   "license": "(Apache-2.0 OR MIT)",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/visjs/vis-timeline.git"
-  },
-  "bugs": {
-    "url": "https://github.com/visjs/vis-timeline/issues"
-  },
   "keywords": [
     "vis",
     "visualization",
@@ -48,7 +40,8 @@
     "contributors:update": "git-authors-cli",
     "preparepublish": "npm run contributors:update",
     "prepublishOnly": "npm run contributors:update && npm run build",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "npm run build"
   },
   "lint-staged": {
     "*.{js,ts,css,html,json,md,yml,yaml}": "prettier --write",
