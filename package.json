@@ -40,8 +40,7 @@
     "contributors:update": "git-authors-cli",
     "preparepublish": "npm run contributors:update",
     "prepublishOnly": "npm run contributors:update && npm run build",
-    "prepare": "husky install",
-    "postinstall": "npm run build"
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,ts,css,html,json,md,yml,yaml}": "prettier --write",
