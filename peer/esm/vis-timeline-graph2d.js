@@ -1,11 +1,11 @@
 /**
  * vis-timeline and vis-graph2d
- * https://visjs.github.io/vis-timeline/
+ * undefined
  *
- * Create a fully customizable, interactive timeline with items and ranges.
+ * A fork of vis-timeline. Create a fully customizable, interactive timeline with items and ranges.
  *
- * @version 0.0.0-no-version
- * @date    2023-12-09T14:51:28.080Z
+ * @version 1.0.0
+ * @date    2023-12-09T17:05:58.974Z
  *
  * @copyright (c) 2011-2017 Almende B.V, http://almende.com
  * @copyright (c) 2017-2019 visjs contributors, https://github.com/visjs
@@ -18619,8 +18619,10 @@ var Core = /*#__PURE__*/function () {
           // calculate a single scroll jump relative to the range scale
           var diff = delta / 120 * (this.range.end - this.range.start) / 20;
           // calculate new start and end
-          var newStart = this.range.start + diff;
-          var newEnd = this.range.end + diff;
+
+          // TODO SCROLLDIRECTION
+          var newStart = this.range.start + diff * (this.options.reverseHorizontalScroll ? -1 : 1);
+          var newEnd = this.range.end + diff * (this.options.reverseHorizontalScroll ? -1 : 1);
           var options = {
             animation: false,
             byUser: true,
@@ -18759,6 +18761,9 @@ var Core = /*#__PURE__*/function () {
      *                              Start date for the visible window
      *                           {number | Date | string} end
      *                              End date for the visible window
+     *                           {boolean} reverseHorizontalScroll
+     *                              Whether the horizontal scrolling should be revered, such
+     *                              that scrolling down moves forwards in time.
      */
   }, {
     key: "setOptions",
@@ -18766,7 +18771,7 @@ var Core = /*#__PURE__*/function () {
       var _context7;
       if (options) {
         // copy the known options
-        var fields = ['width', 'height', 'minHeight', 'maxHeight', 'autoResize', 'start', 'end', 'clickToUse', 'dataAttributes', 'hiddenDates', 'locale', 'locales', 'moment', 'preferZoom', 'rtl', 'zoomKey', 'horizontalScroll', 'verticalScroll', 'longSelectPressTime', 'snap'];
+        var fields = ['width', 'height', 'minHeight', 'maxHeight', 'autoResize', 'start', 'end', 'clickToUse', 'dataAttributes', 'hiddenDates', 'locale', 'locales', 'moment', 'preferZoom', 'rtl', 'zoomKey', 'horizontalScroll', 'verticalScroll', 'longSelectPressTime', 'snap', 'reverseHorizontalScroll'];
         availableUtils.selectiveExtend(fields, this.options, options);
         this.dom.rollingModeBtn.style.visibility = 'hidden';
         if (this.options.rtl) {
@@ -18844,6 +18849,9 @@ var Core = /*#__PURE__*/function () {
               delete this.activator;
             }
           }
+        }
+        if ('reverseHorizontalScroll' in options) {
+          this.reverseHorizontalScroll = options.reverseHorizontalScroll;
         }
 
         // enable/disable autoResize
