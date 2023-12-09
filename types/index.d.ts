@@ -320,6 +320,7 @@ export interface TimelineOptions {
   zoomMax?: number;
   zoomMin?: number;
   xss?: TimelineXSSProtectionOption;
+  reverseHorizontalScroll?: boolean;
 }
 
 /**
