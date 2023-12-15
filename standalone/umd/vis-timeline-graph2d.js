@@ -5,7 +5,7 @@
  * A fork of vis-timeline. Create a fully customizable, interactive timeline with items and ranges.
  *
  * @version 1.0.0
- * @date    2023-12-09T17:05:58.974Z
+ * @date    2023-12-15T14:24:22.308Z
  *
  * @copyright (c) 2011-2017 Almende B.V, http://almende.com
  * @copyright (c) 2017-2019 visjs contributors, https://github.com/visjs
@@ -30550,7 +30550,6 @@
 	          var diff = delta / 120 * (this.range.end - this.range.start) / 20;
 	          // calculate new start and end
 
-	          // TODO SCROLLDIRECTION
 	          var newStart = this.range.start + diff * (this.options.reverseHorizontalScroll ? -1 : 1);
 	          var newEnd = this.range.end + diff * (this.options.reverseHorizontalScroll ? -1 : 1);
 	          var options = {
@@ -40315,6 +40314,10 @@
 	    'undefined': 'undefined'
 	  },
 	  horizontalScroll: {
+	    'boolean': bool$1,
+	    'undefined': 'undefined'
+	  },
+	  reverseHorizontalScroll: {
 	    'boolean': bool$1,
 	    'undefined': 'undefined'
 	  },
